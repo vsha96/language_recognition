@@ -1,34 +1,36 @@
 import mylangrec as mlr
 
-
 '''
-Процедура генерации модели (генерирует таблицы языков, а после сам словарь языков)
-Можно запускать только ее, она вызывает нижние две процедуры.
-Нажал и полетел.
+Model generation procedure (generates language tables, and then the language dictionary itself)
+You can only run it, it calls the bottom two procedures.
 '''
 # mlr.lang_generate()
 
 
-''' 
-Процедура генерация таблиц языков из txt-файлов в директории data
-Помещает таблицы с частотами языков в директорию languages
+
+'''
+Procedure for generating language tables from txt files in the `/data` directory
+Places tables with language frequencies in the `/languages` directory
 '''
 # mlr.lang_generate_csv()
 
-
 '''
-Процедура генерации словаря языков
-По содержанию директории languages определяет доступные языки и делает объект
-    langrec_monograms.pkl
-в директории obj
+The procedure for generating a dictionary of languages
+By the contents of the directory `/languages` determines the available languages and makes an object
+    `langrec_monograms.pkl`
+in the `/obj` directory
 '''
 # mlr.lang_generate_langrec()
 
 
+
 '''
-Функции распознавания
-Выдают массив [язык, близость]
+Recognition functions
+Output array [language, proximity]
 '''
 
-print(mlr.recog('hi how are you?')) # распознать из строки
-print(mlr.recog_file('README.txt')) # распознать из файла
+print(mlr.recog('hi how are you?')) # recognize from a string
+print(mlr.recog_file('README.txt')) # recognize from a file
+
+
+

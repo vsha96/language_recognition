@@ -1,27 +1,49 @@
-Описание:
-	Это работа по распознаванию языка, основанная на самом простом подходе - анализе частоты букв. Данный метод далеко не точный и плохо работает с короткими текстами.
-	Здесь также реализована удобная процедура автоматического добавления новых языков при генерации модели. Ниже описано как для нее готовить данные, чтобы она корректно работала. Или можете сразу посмотреть какой-нибудь из файлов в data, структура довольно простая.
-	Подробно работа алгоритма описана в отчете language_recognition.ipynb
-	Но также есть внутри mylangrec.py
+# Language recognition via monograms
 
-Что нужно для работы:
-	Необходимые модули:
-		os, csv, re, pickle, numpy
+This is a language recognition model based on the simplest approach - analyzing the frequency of letters.
+This method is far from accurate and does not work well with short texts.
 
-Как пользоваться:
-    ===Распознавание===
-        Работает из коробки. Если Вы не удалили obj/langrec_monograms.pkl
-		Откройте main.py, там подключен модуль mylangrec.py (внутри также есть описание и примеры использования)
-	Процедура сборки модели:
-		lang_generate()
-	Функции распознавания:
-		recog(<строка>)
-		recog_file(<путь_к_файлу>)
-		Возвращают массив [язык, близость]
-	===Автоматическое добавление языков===
-    	Работает при сборки модели. Для корректной работы нужно размещать файлы новых языков с названием <lang>_*.txt
-    	Внутри все строки только в формате
-    	<буква> <абсолютная_частота>\n
-    		или
-    	<буква> <относительная_частота>\n
-    	Одно из двух!
+It also implements a convenient procedure for automatically adding new languages when generating the model.
+Below is described how to prepare data for it so that it works correctly.
+Or you can immediately look at some of the files in [`/data`](https://github.com/vsha96/language_recognition/tree/main/data), the structure is quite simple.
+
+The algorithm operation is described in detail in the [`language_recognition.ipynb`](https://github.com/vsha96/language_recognition/blob/main/language_recognition.ipynb) (RU)
+
+
+
+## Installation
+
+- clone this repo  
+`git clone git@github.com:vsha96/language_recognition.git`
+- import the module  
+```python
+import mylangrec as mlr
+```
+
+#### Required modules:
+csv, re, pickle, numpy
+
+
+
+## Usage
+
+See examples in the [`main.py`](https://github.com/vsha96/language_recognition/blob/main/main.py)
+
+#### Recognition:
+Works out of the box. If you haven't deleted `obj/langrec_monograms.pkl`.
+
+- Model assembly procedure:
+`lang_generate()`
+- Recognition functions: `recog("there is a string")` or `recog_file(file_path)`
+
+#### Automatic language adding:
+
+- Add a file with the frequencies of the language in the [`/data`](https://github.com/vsha96/language_recognition/tree/main/data) with the name `<language>_*.txt` (see examples in the [`/data`](https://github.com/vsha96/language_recognition/tree/main/data))  
+! an absolute or relative frequency (one of two) must be specified for each letter of the language inside the file
+- Invoke 
+`lang_generate()`
+- See the new files for the languages inside [`/languages`](https://github.com/vsha96/language_recognition/tree/main/languages)
+
+
+
+
